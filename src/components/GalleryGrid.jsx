@@ -9,7 +9,7 @@ import masonry4 from '../assets/masonry4.png';
 import drinkImg from '../assets/drink.png';
 
 const GalleryImage = ({ src, alt, className = '' }) => (
-  <div className={`overflow-hidden ${className}`}>
+  <div className={`overflow-hidden border-2 border-white ${className}`}>
     <motion.img
       src={src}
       alt={alt}
@@ -38,7 +38,7 @@ const GalleryGrid = () => (
 
       {/* Grid */}
       <ScrollReveal delay={0.15}>
-        <div className="grid grid-cols-3 gap-2 grid-flow-dense bg-white p-2 [grid-auto-rows:17vw] lg:[grid-auto-rows:15vw]">
+        <div className="grid grid-cols-3 gap-4 grid-flow-dense [grid-auto-rows:17vw] lg:[grid-auto-rows:15vw]">
           {/* Large feature image fills two rows exactly */}
           <GalleryImage
             src={masonry1}

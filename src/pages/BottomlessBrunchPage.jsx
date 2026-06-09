@@ -137,29 +137,29 @@ const BottomlessBrunchPage = () => (
       </div>
     </section>
 
-    {/* Details bar */}
-    <section className="bg-brandOlive py-12 md:py-16 px-6 md:px-16">
-      <div className="max-w-[1440px] mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {details.map(({ label, value }) => (
-            <ScrollReveal key={label}>
-              <div>
-                <p className="font-body text-[9px] font-semibold tracking-[0.3em] uppercase text-brandBrass mb-3">
+    {/* Details bar — continuous marquee */}
+    <section className="bg-brandOlive py-12 md:py-16">
+      <div className="overflow-hidden">
+        {/* track is the detail set repeated; -50% loop = duplicate the whole run */}
+        <div className="flex w-max animate-marquee">
+          {[...details, ...details, ...details, ...details, ...details, ...details].map(({ label, value }, i) => (
+            <div key={i} className="flex items-center shrink-0">
+              <div className="flex items-baseline gap-3 px-10">
+                <span className="font-body text-[9px] font-semibold tracking-[0.3em] uppercase text-brandBrass">
                   {label}
-                </p>
-                <p className="font-display text-xl md:text-2xl font-medium text-brandCream leading-snug">
+                </span>
+                <span className="font-display text-xl md:text-2xl font-medium text-brandCream leading-none">
                   {value}
-                </p>
+                </span>
               </div>
-            </ScrollReveal>
+              <span className="text-brandBrass/70 text-lg">✦</span>
+            </div>
           ))}
         </div>
-        <ScrollReveal>
-          <p className="text-center font-body text-brandCream/60 text-xs mt-10">
-            Now available to book. Bookings essential, tables go fast.
-          </p>
-        </ScrollReveal>
       </div>
+      <p className="text-center font-body text-brandCream/60 text-xs mt-10 px-6">
+        Now available to book. Bookings essential, tables go fast.
+      </p>
     </section>
   </Layout>
 );

@@ -30,4 +30,16 @@
     writing-mode: vertical-lr;
     text-orientation: mixed;
   }
+
+  /* Continuous marquee (the track must contain the content duplicated) */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 60s linear infinite;
+  }
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
 }
