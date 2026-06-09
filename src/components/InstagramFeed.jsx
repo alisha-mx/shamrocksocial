@@ -20,7 +20,7 @@ const InstagramFeed = () => {
   }, []);
 
   return (
-    <section className="bg-brandCream py-12 md:py-16 px-6 md:px-16 border-t border-brandOlive/10">
+    <section className="hidden md:block bg-brandCream py-12 md:py-16 px-6 md:px-16 border-t border-brandOlive/10">
       <div className="max-w-[1440px] mx-auto">
         <ScrollReveal>
           <div className="flex items-center justify-between mb-8">
