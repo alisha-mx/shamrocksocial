@@ -196,62 +196,49 @@ const SplitTheGGame = () => {
       ctx.beginPath(); ctx.arc(CX + rw * 0.6, RIM - 4, 7, 0, Math.PI * 2); ctx.fill();
     }
 
-    // Gold harp emblem (decorative, near top)
-    drawHarp(ctx, CX, 168);
+    // Gold clover emblem (decorative, near top)
+    drawClover(ctx, CX, 168);
 
-    // "GUINNESS" serif wordmark printed on the glass
+    // Single serif "G" printed on the glass — the foam splits this
     ctx.save();
-    ctx.textAlign = 'left';
+    ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.font = '700 30px Georgia, "Times New Roman", serif';
-    const word = 'GUINNESS';
-    const wWidth = ctx.measureText(word).width;
-    const left = CX - wWidth / 2;
+    ctx.font = '700 64px Georgia, "Times New Roman", serif';
     ctx.shadowColor = 'rgba(0,0,0,0.55)';
-    ctx.shadowBlur = 5;
+    ctx.shadowBlur = 6;
     ctx.fillStyle = '#fdfaf0';
-    ctx.fillText(word, left, TARGET_CENTER);
+    ctx.fillText('G', CX, TARGET_CENTER);
     ctx.restore();
 
   }, []);
 
-  // Decorative gold harp (not the official logo), drawn at origin then scaled
-  const drawHarp = (ctx, cx, cy, scale = 1.35) => {
+  // Decorative gold clover emblem, drawn at origin then scaled
+  const drawClover = (ctx, cx, cy, scale = 1.3) => {
     ctx.save();
     ctx.translate(cx, cy);
     ctx.scale(scale, scale);
-    const grad = ctx.createLinearGradient(-16, -22, 16, 22);
+    const grad = ctx.createLinearGradient(-16, -18, 16, 20);
     grad.addColorStop(0, '#e7c067');
     grad.addColorStop(1, '#9c7430');
-    ctx.strokeStyle = grad;
-    ctx.lineWidth = 2.4;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    // curved fore-pillar
+    ctx.fillStyle = grad;
+    // three rounded leaves
     ctx.beginPath();
-    ctx.moveTo(-12, 20);
-    ctx.quadraticCurveTo(-22, -16, -2, -24);
-    ctx.stroke();
-    // soundboard
+    ctx.arc(0, -9, 8, 0, Math.PI * 2);   // top
+    ctx.fill();
     ctx.beginPath();
-    ctx.moveTo(12, 20);
-    ctx.lineTo(5, -21);
-    ctx.stroke();
-    // base bar
+    ctx.arc(-8, 2, 8, 0, Math.PI * 2);   // left
+    ctx.fill();
     ctx.beginPath();
-    ctx.moveTo(-14, 21);
-    ctx.lineTo(14, 21);
-    ctx.stroke();
-    // strings
-    ctx.lineWidth = 0.8;
-    ctx.strokeStyle = 'rgba(231,192,103,0.7)';
-    for (let i = 1; i <= 5; i++) {
-      const t = i / 6;
-      ctx.beginPath();
-      ctx.moveTo(-2 + 7 * t, -22 + 3 * i);
-      ctx.lineTo(-11 + 9 * t, 19 - 1 * i);
-      ctx.stroke();
-    }
+    ctx.arc(8, 2, 8, 0, Math.PI * 2);    // right
+    ctx.fill();
+    // stem
+    ctx.beginPath();
+    ctx.moveTo(-2, 4);
+    ctx.quadraticCurveTo(-3, 16, -6, 22);
+    ctx.quadraticCurveTo(0, 23, 6, 22);
+    ctx.quadraticCurveTo(3, 16, 2, 4);
+    ctx.closePath();
+    ctx.fill();
     ctx.restore();
   };
 
