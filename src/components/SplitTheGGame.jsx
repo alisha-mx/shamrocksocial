@@ -395,7 +395,7 @@ const SplitTheGGame = () => {
         disabled={countdown !== null}
         className="mt-6 font-body text-[11px] font-semibold tracking-[0.25em] uppercase px-10 py-4 bg-brandBrass text-guinnessBlack hover:bg-brandCream transition-all duration-300 disabled:opacity-60 disabled:cursor-default"
       >
-        {countdown !== null ? 'Get Ready' : playing ? 'Split It!' : result ? 'Play Again' : 'Start Pour'}
+        {countdown !== null ? 'Get Ready' : playing ? 'Split It!' : result ? 'Play Again' : 'Start Drinking'}
       </button>
 
       <div className="mt-6 h-24 flex items-center justify-center">
